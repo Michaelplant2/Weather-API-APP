@@ -1,5 +1,4 @@
-const input = document.getElementById("input");
-const searchBtn = document.getElementById("search");
+const form = document.querySelector("form");
 
 const getWeatherInfo = async (city)=>{
    const APIKey = `44473c906ff268724944a64022645d3a`
@@ -14,6 +13,8 @@ const getWeatherInfo = async (city)=>{
    let weatherData = await weatherRes.json()
 }
 
-searchBtn.addEventListener("submit", (e)=>{
+form.addEventListener("submit", (e)=>{
    e.preventDefault()
+   const locationInput = e.target.children[0].children[0];
+   getWeatherInfo(locationInput)
 })
