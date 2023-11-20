@@ -1,10 +1,8 @@
-const getWeatherInfo = async ()=>{
+const getWeatherInfo = async (city)=>{
    const APIKey = `44473c906ff268724944a64022645d3a`
-   const city = "New York"
 
    let geoRes = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKey}`)
    let geoData = await geoRes.json()
-   console.log(geoData);
 
    const lat = geoData[0].lat;
    const lon = geoData[0].lon; 
