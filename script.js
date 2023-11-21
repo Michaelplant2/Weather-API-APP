@@ -33,6 +33,8 @@ form.addEventListener("submit", (e)=>{
          weatherInfo.style.backgroundImage = "url(/assets/Clear.png)";
       } else if(data.weather[0].main == "Rain") {
          weatherInfo.style.backgroundImage = "url(/assets/Rain.jpg)";
+      } else {
+         weatherInfo.style.backgroundImage = "none";
       }
    })
    .catch((message)=>{
