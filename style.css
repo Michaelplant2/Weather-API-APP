@@ -25,6 +25,14 @@ h1 {
 }
 
 input {
+   padding: 8px;
    font-size: 18px;
-   height: 30px;
+   border: none;
+   border-radius: 15px;
+}
+
+.weather-info-cont {
+   display: none;
+   flex-direction: column;
+   align-items: center;
 }
