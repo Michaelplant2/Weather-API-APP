@@ -11,19 +11,33 @@ const getWeatherInfo = async (city)=>{
    const lon = geoData[0].lon; 
 
    let weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`)
-   let weatherData = await weatherRes.json()
-
-   form.style.display = "none";
-   weatherInfo.style.display = "flex";
-
-   console.log(weatherData);
-
-   weatherInfo.children[0].textContent = `In ${weatherData.name}, the current temperature is: ${weatherData.main.temp} Fahrenheit`;
-   weatherInfo.children[1].textContent = `Weather Description: ${weatherData.weather[0].main}`;
+   return await weatherRes.json()
 }
 
 form.addEventListener("submit", (e)=>{
    e.preventDefault()
    const locationInput = e.target.children[0].children[0];
    getWeatherInfo(locationInput.value)
+   .then((data)=>{
+      console.log(data);
+      form.style.display = "none";
+      weatherInfo.style.display = "block";
+   
+      weatherInfo.children[0].textContent = `In ${data.name}, the current temperature is: ${data.main.temp} Fahrenheit`;
+      weatherInfo.children[1].textContent = `Feels like ${data.main.feels_like} Fahrenheit`
+      weatherInfo.children[2].textContent = `Weather Description: ${data.weather[0].description}`;
+
+      if(data.weather[0].main == "Clouds") {
+         weatherInfo.style.backgroundImage = "url(/assets/Clouds.jpg)";
+      } else if(data.weather[0].main == "Clear") {
+         weatherInfo.style.backgroundImage = "url(/assets/Clear.png)";
+      } else if(data.weather[0].main == "Rain") {
+         weatherInfo.style.backgroundImage = "url(/assets/Rain.jpg)";
+      }
+   })
+   .catch((message)=>{
+      form.style.display = "none";
+      weatherInfo.style.display = "block";
+      weatherInfo.children[0].textContent = `There was an error getting weather data, please try again!`
+   })
 })

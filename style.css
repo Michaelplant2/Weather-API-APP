@@ -2,6 +2,7 @@
    box-sizing: border-box;
    font-family: Arial, Helvetica, sans-serif;
    text-decoration: none;
+   text-align: center;
 }
 
 body {
@@ -32,7 +33,31 @@ input {
 }
 
 .weather-info-cont {
-   display: none;
-   flex-direction: column;
-   align-items: center;
+   width: 90%;
+   height: 40%;
+   border-radius: 20px;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.weather-info-cont h2 {
+   text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+}
+
+.weather-info-cont p {
+   font-weight: 600;
+   text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+}
+
+.weather-info-cont button {
+   border: none;
+   border-radius: 15px;
+   padding: 5px 10px;
+}
+
+.weather-info-cont button a {
+   color: black;
+   font-size: 15px;
 }
